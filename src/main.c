@@ -17,31 +17,14 @@ void print_vector_info(Vector *v) {
 }
 
 int main() {
-  Vector *vec = vector_create();
-  vector_reserve(vec, 3);
-  print_vector_info(vec);
+  Vector *v = vector_create(sizeof(int));
+  vector_reserve(v, 4);
+  print_vector_info(v);
 
-  vector_push_back(vec, 28);
-  vector_push_back(vec, 7);
-  vector_push_back(vec, 1995);
-  print_vector_info(vec);
+  for (int i = 0; i < 10; i++)
+      vector_push_back(v, &i);
+  print_vector_info(v);
 
-  int pop_val;
-  vector_pop_back(vec, &pop_val);
-  print_vector_info(vec);
-  vector_push_back(vec, 100);
-  vector_push_back(vec, 101);
-  vector_push_back(vec, 102);
-  vector_push_back(vec, 103);
-  vector_push_back(vec, 104);
-  vector_push_back(vec, 105);
-  print_vector_info(vec);
-
-  vector_clear(vec);
-  print_vector_info(vec);
-
-  vector_destroy(&vec);
-  print_vector_info(vec);
 
   return 0;
 }
