@@ -28,6 +28,12 @@ void vector_destroy(Vector **v) {
   *v = NULL;
 }
 
+const void *vector_data(Vector *v) {
+  if (v == NULL || v->size == 0)
+    return NULL;
+  return v->elements;
+}
+
 size_t vector_size(const Vector *v) {
   if (v == NULL)
     return 0;

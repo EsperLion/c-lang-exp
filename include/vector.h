@@ -11,6 +11,9 @@ Vector *vector_create(size_t s);
 /* Free vector and its internal memory */
 void vector_destroy(Vector **v);
 
+/* Return vector elements */
+const void* vector_data(Vector *v);
+
 /* Return number of stored elements */
 size_t vector_size(const Vector *v);
 
