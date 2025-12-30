@@ -8,6 +8,7 @@ include_directories(include)
 add_executable(app
     src/main.c
     src/vector.c
+    src/list.c
 )
 
 # target_sources(app

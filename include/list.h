@@ -24,7 +24,7 @@ List *list_create(size_t elem_size);
  * Пример:
  *   list_destroy(&list);
  */
-void list_destroy(List **list);
+void list_destroy(List **pList);
 
 /*
  * Возвращает количество элементов в списке.
