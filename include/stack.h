@@ -5,28 +5,58 @@
 
 typedef struct Stack Stack;
 
-/* Create empty stack */
-Stack *stack_create(void);
+/**
+ * Create a stack for elements of fixed size.
+ *
+ * Example:
+ *   Stack *s = stack_create(sizeof(int));
+ */
+Stack *stack_create(size_t elem_size);
 
-/* Free stack memory */
-void stack_destroy(Stack *s);
+/**
+ * Destroy stack and free all allocated memory.
+ * After this call, *stack is set to NULL.
+ */
+void stack_destroy(Stack **stack);
 
-/* Push value onto stack */
-int stack_push(Stack *s, int value);
+/**
+ * Push element to the top of the stack.
+ *
+ * Copies elem_size bytes from value into the stack.
+ *
+ * Returns 1 on success, 0 on failure.
+ */
+int stack_push(Stack *stack, const void *value);
 
-/* Pop top value from stack */
-int stack_pop(Stack *s, int *out);
+/**
+ * Remove and return the top element of the stack.
+ *
+ * Copies the top element into out.
+ * If out is NULL, element is just removed.
+ *
+ * Returns 1 on success, 0 if stack is empty or invalid.
+ */
+int stack_pop(Stack *stack, void *out);
 
-/* Read top value without removing */
-int stack_peek(const Stack *s, int *out);
+/**
+ * Get the top element without removing it.
+ *
+ * Copies the top element into out.
+ *
+ * Returns 1 on success, 0 if stack is empty or invalid.
+ */
+int stack_peek(const Stack *stack, void *out);
 
-/* Return number of elements */
-size_t stack_size(const Stack *s);
+/**
+ * Get number of elements in the stack.
+ */
+size_t stack_size(const Stack *stack);
 
-/* Check if stack is empty */
-int stack_is_empty(const Stack *s);
+/**
+ * Check whether the stack is empty.
+ *
+ * Returns 1 if empty, 0 otherwise.
+ */
+int stack_is_empty(const Stack *stack);
 
-/* Remove all elements */
-void stack_clear(Stack *s);
-
-#endif
+#endif /* STACK_H */
