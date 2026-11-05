@@ -82,7 +82,9 @@ int vector_push_back(Vector *v, const void *value) {
   if (v == NULL)
     return 0;
   if (v->size == v->capacity) {
-    vector_reserve(v, v->capacity ? v->capacity * 2 : 1);
+    int result = vector_reserve(v, v->capacity ? v->capacity * 2 : 1);
+    // if reserve fails return from function
+    if (result == 0) return result;
   }
   memcpy((char *)v->elements + v->size * v->elem_size, value, v->elem_size);
   v->size++;

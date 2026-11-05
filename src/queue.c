@@ -7,7 +7,7 @@ typedef struct Queue {
 } Queue;
 
 Queue *queue_create(size_t elem_size) {
-    Queue *q = malloc(elem_size);
+    Queue *q = malloc(sizeof(Queue));
     if (!q) {
         return 0;
     }
