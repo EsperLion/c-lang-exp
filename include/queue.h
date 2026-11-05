@@ -5,28 +5,58 @@
 
 typedef struct Queue Queue;
 
-/* Create empty queue */
-Queue *queue_create(void);
+/**
+ * Create a queue for elements of fixed size.
+ *
+ * Example:
+ *   Queue *q = queue_create(sizeof(int));
+ */
+Queue *queue_create(size_t elem_size);
 
-/* Free queue memory */
-void queue_destroy(Queue *q);
+/**
+ * Destroy queue and free all allocated memory.
+ * After this call, *queue is set to NULL.
+ */
+void queue_destroy(Queue **queue);
 
-/* Add element to back */
-int queue_enqueue(Queue *q, int value);
+/**
+ * Add an element to the end of the queue.
+ *
+ * Copies elem_size bytes from value into the queue.
+ *
+ * Returns 1 on success, 0 on failure.
+ */
+int queue_enqueue(Queue *queue, const void *value);
 
-/* Remove element from front */
-int queue_dequeue(Queue *q, int *out);
+/**
+ * Remove and return the element from the front of the queue.
+ *
+ * Copies the element into out.
+ * If out is NULL, element is just removed.
+ *
+ * Returns 1 on success, 0 if queue is empty or invalid.
+ */
+int queue_dequeue(Queue *queue, void *out);
 
-/* Read front element without removing */
-int queue_peek(const Queue *q, int *out);
+/**
+ * Get the element at the front of the queue without removing it.
+ *
+ * Copies the element into out.
+ *
+ * Returns 1 on success, 0 if queue is empty or invalid.
+ */
+int queue_peek(const Queue *queue, void *out);
 
-/* Return number of elements */
-size_t queue_size(const Queue *q);
+/**
+ * Get number of elements in the queue.
+ */
+size_t queue_size(const Queue *queue);
 
-/* Check if queue is empty */
-int queue_is_empty(const Queue *q);
+/**
+ * Check whether the queue is empty.
+ *
+ * Returns 1 if empty, 0 otherwise.
+ */
+int queue_is_empty(const Queue *queue);
 
-/* Remove all elements */
-void queue_clear(Queue *q);
-
-#endif
+#endif /* QUEUE_H */

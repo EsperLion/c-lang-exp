@@ -1,2 +1,10 @@
-/build
+# Build output
+/build/
+/.xmake/
+
+# Generated project files
+compile_commands.json
+compile_flags.txt
+
+# macOS
 .DS_Store
