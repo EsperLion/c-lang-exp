@@ -10,7 +10,8 @@ target("app")
         "src/main.c",
         "src/vector.c",
         "src/list.c",
-        "src/stack.c"
+        "src/stack.c",
+        "src/ring-buffer.c"
     )
 
 -- -------- Tests --------
@@ -33,3 +34,12 @@ target("queue.test")
         "src/list.c"
     )
     add_tests("queue")
+
+target("ring-buffer.test")
+    set_kind("binary")
+    set_default(false)
+    add_files(
+        "tests/ring-buffer.test.c",
+        "src/ring-buffer.c"
+    )
+    add_tests("ring-buffer")
