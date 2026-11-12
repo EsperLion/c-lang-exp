@@ -11,7 +11,8 @@ target("app")
         "src/vector.c",
         "src/list.c",
         "src/stack.c",
-        "src/ring-buffer.c"
+        "src/ring-buffer.c",
+        "src/hash-table.c"
     )
 
 -- -------- Tests --------
